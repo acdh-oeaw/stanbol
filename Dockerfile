@@ -1,5 +1,5 @@
 #FROM tomcat:9-jdk8-temurin
-FROM tomcat:8.5.31-jre8
+FROM tomcat:8.5-jdk8-temurin-jammy
 ###
 # Set environment variables
 ###
