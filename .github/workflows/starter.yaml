@@ -29,7 +29,7 @@ jobs:
       #      herokuish_base_image: ghcr.io/acdh-oeaw/herokuish-for-cypress/main:latest-22
       APP_NAME: enrich
       # This together with the branch name is also used as the namespace to deploy to
-      APP_ROOT: "/"
+      APP_ROOT: "/stanbol/"
       # SERVICE_ID: "99999" # Better use GtiHub environment variables for this
       # PUBLIC_URL: "https://some-stuff.acdh-ch-dev.oeaw.ac.at" # Use GitHub environment variables for a stable custom public url
       # POSTGRES_ENABLED: "false" # needs to be set to true to enable a postgres db installed next to the deployed app
