@@ -112,7 +112,7 @@
     -->
 
     <!-- Define an AJP 1.3 Connector on port 8009 -->
-    <Connector port="8009" protocol="AJP/1.3" redirectPort="8443" />
+    <Connector port="8009" protocol="AJP/1.3" redirectPort="8443" secretRequired="false" />
 
 
     <!-- An Engine represents the entry point (within Catalina) that processes
@@ -145,7 +145,8 @@
       </Realm>
 
       <Host name="localhost"  appBase="webapps"
-            unpackWARs="true" autoDeploy="true">
+            unpackWARs="true" autoDeploy="false" deployOnStartup="false">
+            <Context path="" docBase="stanbol"></Context>
 
         <!-- SingleSignOn valve, share authentication between web applications
                           Documentation at: /docs/config/valve.html -->
