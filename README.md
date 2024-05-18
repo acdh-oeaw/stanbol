@@ -11,7 +11,7 @@ Apache Stanbol (enrich) is a modular set of components and HTTP services for sem
 |HELM_UPGRADE_EXTRA_ARGS||Variable|Repo/Env|Used to set a few values from the Helm charts value.yaml using `--set` command line parameters to `helm`. If you have to set more or nested values better use a `auto-deploy-values.yaml` file in the git repository. Store as a Secret if you `--set` sensitive information (not recommended) |
 
 NOTE:
-After deployment update role manager-gui by adding credentials for it to /usr/local/tomcat/conf/tomcat-users.xml and edit context for manager/host-maanger.
+After deployment update role manager-gui by adding credentials for it to /usr/local/tomcat/conf/tomcat-users.xml and edit context for manager/host-manager.
 
 
 Following PVC are required:
