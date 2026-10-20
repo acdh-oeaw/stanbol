@@ -66,8 +66,22 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y nano wget unzip v
         "$JAVA_HOME/bin/java" -version && \
     sudo -HEu "$USER" env JAVA_HOME="$JAVA_HOME" \
         mvn -version && \
+    printf '%s\n' \
+        '<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0">' \
+        '  <mirrors>' \
+        '    <mirror>' \
+        '      <id>restlet-https</id>' \
+        '      <mirrorOf>maven-restlet</mirrorOf>' \
+        '      <url>https://maven.restlet.talend.com</url>' \
+        '    </mirror>' \
+        '  </mirrors>' \
+        '</settings>' \
+        > "$USER_HOME/.m2/restlet-settings.xml" && \
+    rm -rf "$USER_HOME/.m2/repository/org/restlet" && \
     sudo -HEu "$USER" env JAVA_HOME="$JAVA_HOME" \
-        mvn -B -e clean install -Dmaven.test.skip=true
+        mvn -B -e \
+        -s "$USER_HOME/.m2/restlet-settings.xml" \
+        clean install -Dmaven.test.skip=true
 
 ###
 # HTTP Over SSL
