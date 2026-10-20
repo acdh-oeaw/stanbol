@@ -21,7 +21,7 @@ COPY server.xml $CATALINA_HOME/conf/server.xml
 # Install dependencies and software
 ###
 
-RUN apt-get update && apt-get upgrade -y && apt-get install -y openjdk-8-jdk nano wget unzip vim maven git sudo gosu locales && \
+RUN apt-get update && apt-get upgrade -y && apt-get install -y nano wget unzip vim maven git sudo gosu locales && \
     apt-get clean && \
 ###
 # Configure TERM that can work nice with nano
