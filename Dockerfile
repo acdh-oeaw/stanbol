@@ -53,6 +53,12 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y nano wget unzip v
     cd $USER_HOME && git clone https://github.com/apache/stanbol.git && \
     cd $USER_HOME/stanbol && \
     git checkout tags/$STANBOL_TAG && \
+    find "$USER_HOME/stanbol" -type f -name 'pom.xml' \
+        -exec sed -i \
+        -e 's|http://maven\.restlet\.org|https://maven.restlet.talend.com|g' \
+        -e 's|https://maven\.restlet\.org|https://maven.restlet.talend.com|g' \
+        {} + && \
+    rm -rf "$USER_HOME/.m2/repository/org/restlet" && \
     chown -R $USER:$USER  $USER_HOME && \
     cd $USER_HOME/stanbol && \
     sed -i "s|<stanbol.port>8080</stanbol.port>|<stanbol.port>8443</stanbol.port>|g" $USER_HOME/stanbol/launchers/full-war/pom.xml && \
