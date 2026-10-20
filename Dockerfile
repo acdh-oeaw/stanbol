@@ -56,7 +56,12 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y nano wget unzip v
     chown -R $USER:$USER  $USER_HOME && \
     cd $USER_HOME/stanbol && \
     sed -i "s|<stanbol.port>8080</stanbol.port>|<stanbol.port>8443</stanbol.port>|g" $USER_HOME/stanbol/launchers/full-war/pom.xml && \
-    sudo -HEu $USER mvn clean install -Dmaven.test.skip   
+    sudo -HEu "$USER" env JAVA_HOME="$JAVA_HOME" \
+        "$JAVA_HOME/bin/java" -version && \
+    sudo -HEu "$USER" env JAVA_HOME="$JAVA_HOME" \
+        mvn -version && \
+    sudo -HEu "$USER" env JAVA_HOME="$JAVA_HOME" \
+        mvn -B -e clean install -Dmaven.test.skip=true
 
 ###
 # HTTP Over SSL
